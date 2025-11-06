@@ -56,6 +56,12 @@ GEM
       activemodel (= 8.1.1)
       activesupport (= 8.1.1)
       timeout (>= 0.4.0)
+    activerecord-session_store (2.2.0)
+      actionpack (>= 7.0)
+      activerecord (>= 7.0)
+      cgi (>= 0.3.6)
+      rack (>= 2.0.8, < 4)
+      railties (>= 7.0)
     activestorage (8.1.1)
       actionpack (= 8.1.1)
       activejob (= 8.1.1)
@@ -77,24 +83,24 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    amazing_print (2.0.0)
     ast (2.4.3)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    backport (1.2.0)
     base64 (0.3.0)
     bcrypt_pbkdf (1.1.1)
     bcrypt_pbkdf (1.1.1-x64-mingw-ucrt)
+    benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
-    brakeman (7.1.1)
-      racc
+    browser (6.2.0)
     builder (3.3.0)
-    bundler-audit (0.9.2)
-      bundler (>= 1.2.0, < 3)
-      thor (~> 1.0)
+    byebug (12.0.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -104,15 +110,20 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    cgi (0.5.0)
+    colorize (1.1.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
+    content_disposition (1.0.0)
     crass (1.0.6)
     date (3.5.0)
-    debug (1.11.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
+    diff-lcs (1.6.2)
+    domain_name (0.6.20240107)
     dotenv (3.1.8)
+    down (5.4.2)
+      addressable (~> 2.8)
     drb (2.2.3)
+    dry-cli (1.3.0)
     ed25519 (1.4.0)
     erb (5.1.3)
     erubi (1.13.1)
@@ -121,13 +132,30 @@ GEM
     execjs (2.10.0)
     ffi (1.17.2-x64-mingw-ucrt)
     ffi (1.17.2-x86_64-linux-gnu)
+    ffi-compiler (1.3.2)
+      ffi (>= 1.15.5)
+      rake
+    foreman (0.90.0)
+      thor (~> 1.4)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
+    glob (0.4.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    http (5.3.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.5.0)
+    http-cookie (1.1.0)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    i18n-js (4.2.4)
+      glob (>= 0.4.0)
+      i18n
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
@@ -140,10 +168,16 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jaro_winkler (1.6.1)
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     json (2.15.2)
+    json-schema (6.0.0)
+      addressable (~> 2.8)
+      bigdecimal (~> 3.1)
+    jsonpath (1.1.5)
+      multi_json
     kamal (2.8.2)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -155,8 +189,19 @@ GEM
       sshkit (>= 1.23.0, < 2.0)
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
+    listen (3.9.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.5.1)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    lockfile (2.1.3)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -169,11 +214,14 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
+    memory_profiler (1.1.0)
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
     minitest (5.26.0)
     msgpack (1.8.0)
+    multi_json (1.17.0)
+    mutex_m (0.3.0)
     net-imap (0.5.12)
       date
       net-protocol
@@ -193,6 +241,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
+    observer (0.1.2)
+    oj (3.16.12)
+      bigdecimal (>= 3.0)
+      ostruct (>= 0.2)
     ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.10.0)
@@ -212,11 +264,16 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (7.1.0)
+    puma (6.6.1)
       nio4r (~> 2.0)
+    puma-daemon (0.5.0)
+      puma (>= 5.0)
+      rack
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.2.4)
+    rack-proxy (0.7.7)
+      rack
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -245,6 +302,10 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails_semantic_logger (4.18.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (8.1.1)
       actionpack (= 8.1.1)
       activesupport (= 8.1.1)
@@ -256,6 +317,11 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.11.1)
+      ffi (~> 1.0)
+    rbs (3.9.5)
+      logger
     rdoc (6.15.1)
       erb
       psych (>= 4.0.0)
@@ -266,10 +332,35 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.26.1)
+      connection_pool
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
+    reverse_markdown (3.0.0)
+      nokogiri
     rexml (3.4.4)
+    roda (3.97.0)
+      rack
+    rspec-core (3.13.6)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.7)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (8.0.2)
+      actionpack (>= 7.2)
+      activesupport (>= 7.2)
+      railties (>= 7.2)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.6)
     rubocop (1.81.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -284,20 +375,16 @@ GEM
     rubocop-ast (1.47.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    rubocop-performance (1.26.1)
+    rubocop-performance (1.25.0)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.47.1, < 2.0)
+      rubocop-ast (>= 1.38.0, < 2.0)
     rubocop-rails (2.33.4)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
-    rubocop-rails-omakase (1.1.0)
-      rubocop (>= 1.72)
-      rubocop-performance (>= 1.24)
-      rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.5)
       ffi (~> 1.12)
@@ -310,6 +397,43 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    semantic_logger (4.17.0)
+      concurrent-ruby (~> 1.0)
+    shrine (3.6.0)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
+    shrine-tus (2.1.1)
+      shrine (~> 3.2)
+      shrine-url (~> 2.4)
+      tus-server (~> 2.0)
+    shrine-url (2.4.1)
+      down (~> 5.0)
+      http (>= 3.2, < 6)
+      shrine (>= 3.0.0.rc, < 4)
+    solargraph (0.57.0)
+      backport (~> 1.2)
+      benchmark (~> 0.4)
+      bundler (~> 2.0)
+      diff-lcs (~> 1.4)
+      jaro_winkler (~> 1.6, >= 1.6.1)
+      kramdown (~> 2.3)
+      kramdown-parser-gfm (~> 1.1)
+      logger (~> 1.6)
+      observer (~> 0.1)
+      ostruct (~> 0.6)
+      parser (~> 3.0)
+      prism (~> 1.4)
+      rbs (>= 3.6.1, <= 4.0.0.dev.4)
+      reverse_markdown (~> 3.0)
+      rubocop (~> 1.76)
+      thor (~> 1.0)
+      tilt (~> 2.0)
+      yard (~> 0.9, >= 0.9.24)
+      yard-activesupport-concern (~> 0.0)
+      yard-solargraph (~> 0.1)
+    solargraph-rails (1.2.4)
+      activesupport
+      solargraph (>= 0.48.0, <= 0.57)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -326,6 +450,7 @@ GEM
       fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
+    spring (4.4.0)
     sshkit (1.24.0)
       base64
       logger
@@ -333,9 +458,22 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
+    standard (1.35.0.1)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.62)
+      standard-custom (~> 1.0.0)
+      standard-performance (~> 1.3)
+    standard-custom (1.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.50)
+    standard-performance (1.8.0)
+      lint_roller (~> 1.1)
+      rubocop-performance (~> 1.25.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.7)
+    strong_password (0.0.10)
     thor (1.4.0)
     thruster (0.1.16)
     thruster (0.1.16-x86_64-linux)
@@ -345,6 +483,9 @@ GEM
     turbo-rails (2.0.20)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
+    tus-server (2.3.0)
+      content_disposition (~> 1.0)
+      roda (>= 2.27, < 4)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2025.2)
@@ -354,6 +495,15 @@ GEM
     unicode-emoji (4.1.0)
     uri (1.1.1)
     useragent (0.16.11)
+    vite_rails (3.0.19)
+      railties (>= 5.1, < 9)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.9.2)
+      dry-cli (>= 0.7, < 2)
+      logger (~> 1.6)
+      mutex_m
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -366,6 +516,11 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yard (0.9.37)
+    yard-activesupport-concern (0.0.1)
+      yard (>= 0.8)
+    yard-solargraph (0.1.0)
+      yard (~> 0.9)
     zeitwerk (2.7.3)
 
 PLATFORMS
@@ -373,29 +528,54 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-session_store
+  amazing_print
   bootsnap
-  brakeman
-  bundler-audit
+  browser
+  byebug
   capybara
-  debug
+  colorize
+  foreman
+  i18n-js
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  json-schema
+  jsonpath
   kamal
-  pg (~> 1.1)
+  listen
+  lockfile
+  memory_profiler
+  oj
+  pg (~> 1.6)
   propshaft
-  puma (>= 5.0)
+  puma (< 7)
+  puma-daemon
   rails (~> 8.1.1)
+  rails_semantic_logger
   react-rails
-  rubocop-rails-omakase
+  redis (~> 5.0)
+  rspec-rails
+  rubocop
+  rubocop-performance
+  rubocop-rails
   selenium-webdriver
+  shrine (~> 3.0)
+  shrine-tus (~> 2.1)
+  solargraph
+  solargraph-rails
   solid_cable
   solid_cache
   solid_queue
+  spring
+  standard (>= 1.0)
   stimulus-rails
+  strong_password (~> 0.0.10)
   thruster
   turbo-rails
+  tus-server (~> 2.3)
   tzinfo-data
+  vite_rails
   web-console
 
 BUNDLED WITH

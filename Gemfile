@@ -6,14 +6,10 @@ gem "rails", "~> 8.1.1"
 gem "propshaft"
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.6'
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -37,9 +33,6 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
-
 gem 'react-rails'
 
 gem 'oj'
@@ -58,8 +51,7 @@ gem "rails_semantic_logger"
 gem 'stimulus-rails'
 # Used with scheduled tasks at least
 gem 'lockfile'
-# Decrease boot time
-gem 'bootsnap', require: false
+
 # Translation conversion to JSON
 gem "i18n-js"
 # JSON schema validator - Validate JSON objects against a JSON schema
@@ -103,12 +95,7 @@ group :development, :test do
   gem 'solargraph-rails'
   
   # Colorful prints
-  gem 'colorize'uire: false
-end
-
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  gem 'colorize'
 end
 
 group :test do
