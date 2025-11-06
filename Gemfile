@@ -5,7 +5,7 @@ gem "rails", "~> 8.1.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.6'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -41,18 +41,69 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 gem 'react-rails'
+
+gem 'oj'
+
+gem 'puma', '< 7'
+gem 'puma-daemon'
+gem 'activerecord-session_store'
+gem 'vite_rails'
+# Browser detection
+gem 'browser'
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem 'turbo-rails'
+gem "amazing_print"
+gem "rails_semantic_logger"
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem 'stimulus-rails'
+# Used with scheduled tasks at least
+gem 'lockfile'
+# Decrease boot time
+gem 'bootsnap', require: false
+# Translation conversion to JSON
+gem "i18n-js"
+# JSON schema validator - Validate JSON objects against a JSON schema
+gem 'json-schema'
+gem 'jsonpath'
+# Password validation
+gem 'strong_password', '~> 0.0.10'
+# File uploads & tus server
+gem "shrine", "~> 3.0"
+gem "tus-server", "~> 2.3"
+gem "shrine-tus", "~> 2.1"
+gem "image_processing", "~> 1.2"
+# For action cable sub/pub
+gem 'redis', '~> 5.0'
+
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
 
-  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
-  gem "bundler-audit", require: false
+  gem 'web-console'
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem 'spring'
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  gem 'foreman'
+
+  # File changes
+  gem 'listen'
+
+  # API docs
+  gem 'rspec-rails'
+
+  # Memory profiling
+  gem 'memory_profiler'
+
+  # Formatting & linting
+  gem 'standard', '>= 1.0'
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-performance'
+  gem 'solargraph'
+  gem 'solargraph-rails'
+  
+  # Colorful prints
+  gem 'colorize'uire: false
 end
 
 group :development do
