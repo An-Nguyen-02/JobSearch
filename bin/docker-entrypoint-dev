@@ -5,7 +5,7 @@ set -e
 rm -f /rails/tmp/pids/server.pid
 
 # Check if we need to install new gems
-bundle check || bundle install
+bundle install
 
 # Check if we need to install new npm packages
 if [ -f package.json ]; then

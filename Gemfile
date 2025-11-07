@@ -2,8 +2,7 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.1"
-# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft"
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.6'
 
@@ -38,7 +37,6 @@ gem 'react-rails'
 gem 'oj'
 
 gem 'puma', '< 7'
-gem 'puma-daemon'
 gem 'activerecord-session_store'
 gem 'vite_rails'
 # Browser detection
@@ -66,7 +64,8 @@ gem "shrine-tus", "~> 2.1"
 gem "image_processing", "~> 1.2"
 # For action cable sub/pub
 gem 'redis', '~> 5.0'
-
+gem 'sprockets-rails'
+gem 'sprockets'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -87,7 +86,7 @@ group :development, :test do
   gem 'memory_profiler'
 
   # Formatting & linting
-  gem 'standard', '>= 1.0'
+  gem 'standard', ">= 1.35.1"
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-performance'
