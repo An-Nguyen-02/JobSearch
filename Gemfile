@@ -36,7 +36,7 @@ gem 'react-rails'
 
 gem 'oj'
 
-gem 'puma', '< 7'
+gem 'puma', '< 8'
 gem 'activerecord-session_store'
 gem 'vite_rails'
 # Browser detection
