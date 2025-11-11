@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  NO_REQUIRE_LOGIN = ["login.show"]
   def init_session(person_id)
     reset_session
     user = UserService.new(nil).find_user(person_id)
@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def require_login
-    if !logged_in?
+    if !logged_in? && !NO_REQUIRE_LOGIN.include?("#{self.controller_name}.#{action_name}")
       return render json: {status: 'Please login'}, status: :unauthorized
       return false
     end

@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:15
+    image: postgres:17
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -8,9 +8,9 @@ services:
       POSTGRES_USER: rails
       POSTGRES_DB: job_search
     ports:
-      - "5432:5432"
+      - "5434:5432"
 
-  web:
+  web: &application
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -27,6 +27,13 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  runner:
+    # docker-compose run --rm runner 
+    <<: *application
+    profiles: ["runner"]
+    command: /bin/bash --init-file .init-runner
+    ports:
+      - '3002:3002'
 
 volumes:
   postgres_data:

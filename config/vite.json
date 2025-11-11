@@ -1,0 +1,15 @@
+{
+  "all": {
+    "sourceCodeDir": "app/javascript",
+    "watchAdditionalPaths": [],
+    "entrypointsDir": "entrypoints"
+  },
+  "development": {
+    "autoBuild": true,
+    "publicOutputDir": "vite-dev"
+  },
+  "production": {
+    "autoBuild": false,
+    "publicOutputDir": "vite"
+  }
+}

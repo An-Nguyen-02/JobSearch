@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
 
   after_action :set_cors, only: :confirm_login
-  protect_from_forgery, except: [:confirm_login], with: :exception
+  protect_from_forgery except: [:confirm_login, :show], with: :exception
 
   skip_before_action :verify_authenticity_token, only: [:logout]
 

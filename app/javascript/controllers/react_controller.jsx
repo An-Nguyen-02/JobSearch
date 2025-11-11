@@ -11,13 +11,8 @@ const components = {
   Notification: {skeleton: null, component: Notification}
 }
 export default class ReactController extends Controller {
-    static values = {
-        class: String,
-        props: String
-    };
 
     connect() {
-
         const Component = components[this.classValue].component;
         let props = this.propsValue || {};
 
@@ -44,7 +39,7 @@ export default class ReactController extends Controller {
         this.element.removeEventListener("react:unmount", this.unmountComponent);
     }
 
-    unmountComponent = () => {
+    unmountComponent() {
       if (this.root) {
         this.root.unmount();
         this.root = null;

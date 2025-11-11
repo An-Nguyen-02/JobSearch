@@ -3,7 +3,7 @@ import Snackbar from '@mui/material/Snackbar';
 const CONTAINER_ID = 'MuiSnackbar-root';
 let root = null;
 
-export default function ToastNotification(props) {
+export default function Notification(props) {
   if (!document.getElementById(CONTAINER_ID)) {
     var div = document.createElement('div');
     div.id = CONTAINER_ID;

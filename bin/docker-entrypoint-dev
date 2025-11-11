@@ -4,8 +4,10 @@ set -e
 # Remove a potentially pre-existing server.pid for Rails
 rm -f /rails/tmp/pids/server.pid
 
+unset BUNDLE_PATH
+
 # Check if we need to install new gems
-bundle install
+bundle check || bundle install
 
 # Check if we need to install new npm packages
 if [ -f package.json ]; then
@@ -13,7 +15,7 @@ if [ -f package.json ]; then
 fi
 
 # Wait for database to be ready
-until nc -z -v -w30 db 5432
+until nc -z -v -w30 db 5434
 do
   echo 'Waiting for PostgreSQL...'
   sleep 1

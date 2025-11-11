@@ -5,11 +5,6 @@ class UserController < ApplicationController
 
   end
 
-  # GET user/edit (user_edit)
-  def edit
-
-  end
-
   # PATCH user/update (user_update)
   def update
 

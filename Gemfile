@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 7.x"
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.6'
@@ -66,6 +66,9 @@ gem "image_processing", "~> 1.2"
 gem 'redis', '~> 5.0'
 gem 'sprockets-rails'
 gem 'sprockets'
+
+gem 'bootstrap'
+gem 'sassc-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
