@@ -9,6 +9,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= vite_stylesheet_tag 'app.scss' %>
+    <%= vite_javascript_tag 'application', data: { turbo_track: "reload" } %>
     <%= action_cable_meta_tag %>
     <%= vite_client_tag %>
     <%= vite_react_refresh_tag %>

@@ -4,18 +4,23 @@ import { createRoot } from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from '../query_client.js';
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Skeleton from 'react-loading-skeleton'
 
 import Notification from "../src/components/common/Notification.jsx";
 
+const LoginPage = lazy(() => import("../src/components/common/LoginPage.jsx"));
+
 const components = {
-  Notification: {skeleton: null, component: Notification}
+  LoginPage: {skeleton: <Skeleton />, component: LoginPage}
 }
 export default class ReactController extends Controller {
-
+    static values = {
+        class: String,
+        props: String
+    };
     connect() {
         const Component = components[this.classValue].component;
         let props = this.propsValue || {};
-
         if (typeof props === "string") {
             props = JSON.parse(props);
         }
