@@ -44,4 +44,4 @@
 # end
 
 
-react_component('LoginPage', {})
+xml.tag! react_component('LoginPage', {})
